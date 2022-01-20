@@ -15,4 +15,3 @@
 	<context:component-scan base-package="com.poscoict.helloweb.controller" />
 
 </beans>
-	
