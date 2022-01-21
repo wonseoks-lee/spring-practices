@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.poscoict.guestbook.vo.GuestbookVo;
 
-
+@Repository
 public class GuestbookRepository {
 
 	Connection conn = null;
