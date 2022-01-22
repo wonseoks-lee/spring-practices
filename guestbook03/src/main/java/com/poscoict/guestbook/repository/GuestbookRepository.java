@@ -106,15 +106,15 @@ public class GuestbookRepository {
 		return result;
 	}
 	
-	public boolean delete(String no, String password) {
+	public boolean delete(GuestbookVo vo) {
 		boolean result = false;
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement("delete from guestbook where no=? and password=?;");
 			
-			psmt.setString(1, no);
-			psmt.setString(2, password);
+			psmt.setLong(1, vo.getNo());
+			psmt.setString(2, vo.getPassword());
 			
 			psmt.executeUpdate();
 			result = true;
