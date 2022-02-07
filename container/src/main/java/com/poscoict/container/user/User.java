@@ -1,12 +1,23 @@
 package com.poscoict.container.user;
 
+import java.util.List;
+
 public class User {
 	private String name = "이원석";
 	private Long no = 0L;
+	private Friend friend = null;
+	private List<String> friends;
+	
+	public void setFriends(List<String> friends) {
+		this.friends = friends;
+	}
+
+
 	public User() {
 		
 	}
-
+	
+	
 	public User(String name) {
 		this.name=name;
 	}
@@ -17,7 +28,10 @@ public class User {
 	}
 	
 	
-	
+	public void setFriend(Friend friend) {
+		this.friend = friend;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -28,7 +42,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", no=" + no + "]";
+		return "User [name=" + name + ", no=" + no + ", friend=" + friend + ", friends=" + friends + "]";
 	}
 
 	
