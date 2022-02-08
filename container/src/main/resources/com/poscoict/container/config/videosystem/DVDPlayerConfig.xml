@@ -4,6 +4,7 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
@@ -75,11 +76,45 @@
 		<property name="studio" value="MARVEL"/>
 	</bean>
 	
-	<context:annotation-config />
+	<!-- 10. 빈생성: property사용2 (기본생성자) -->
+	<bean id="avengersExpansionEdition2" class="com.poscoict.container.videosystem.BlankDisc"
+		p:title="Avengers ExpansionEdition2"
+		p:studio="MARVEL">
+	</bean>
 	
-	<context:component-scan base-package="com.poscoict.container.soundsystem">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
-	</context:component-scan>
+	<!-- 11. 빈생성: property사용3 -->
+	<util:list id="actorList">
+		<value>Robert Downey Jr</value>
+		<value>Scalette</value>
+		<value>Chris Evans</value>
+	</util:list>
+	<bean id="avengersExpansionEdition3" class="com.poscoict.container.videosystem.BlankDisc"
+		p:title="Avengers ExpansionEdition3"
+		p:studio="MARVEL"
+		p:actors-ref="actorList">
+	</bean>
 	
+	<!-- 12. 빈 주입(Wiring): 생성자1 -->
+	<bean id="dvdPlayer1" class="com.poscoict.container.videosystem.DVDPlayer">
+		<constructor-arg ref="ironMan"/>
+	</bean>
+
+	<!-- 추천 -->	
+	<!-- 13. 빈 주입(Wiring): 생성자2: c-namespace의 argument name을 사용하는 방법: Spring 3.x 지원 -->
+	<bean id="dvdPlayer2" class="com.poscoict.container.videosystem.DVDPlayer"
+		c:dvd-ref="ironMan"/>
+		
+	<!-- 14. 빈 주입(Wiring): 생성자3: c-namespace의 argument index을 사용하는 방법: Spring 3.x 지원 -->
+	<bean id="dvdPlayer3" class="com.poscoict.container.videosystem.DVDPlayer"
+		c:_0-ref="ironMan"/>
+		
+	<!-- 15. 빈 주입(Wiring): property1 -->
+	<bean id="dvdPlayer4" class="com.poscoict.container.videosystem.DVDPlayer">
+		<property name="dvd" ref="ironMan"/>
+	</bean>
+	
+	<!-- 16. 빈 주입(Wiring): property2: p-namespace 사용 -->
+	<bean id="dvdPlayer5" class="com.poscoict.container.videosystem.DVDPlayer"
+		p:dvd-ref="ironMan"/>
 	
 </beans>
