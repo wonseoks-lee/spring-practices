@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.poscoict.container.config.videosystem.DvdPlayerConfig;
+import com.poscoict.container.config.videosystem.DVDPlayerConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {DvdPlayerConfig.class})
-public class DvdPlayerJavaConfigTest {
+@ContextConfiguration(classes= {DVDPlayerConfig.class})
+public class DVDPlayerJavaConfigTest {
 	
 	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
